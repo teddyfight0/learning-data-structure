@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "linkedlist.h"
-
+// This c document is used to create the double linkedlist
 typedef struct node{
     int data;
     struct node *next;
@@ -18,7 +17,6 @@ node*createnode(int num){
 }
 
 void addlast(node**root,int num){
-    
     node*last=NULL;
     if (*root==NULL){
         *root=createnode(num);
@@ -48,11 +46,16 @@ void printlist(node*root){
     }
     return ;
 }
-int main(void){
-    node*root=NULL;
-    addlast(&root,4);
-    addlast(&root,3);
-    addlast(&root,2);
-    printlist(root);
-    return 0;
+void printadverselist(node*root){
+    node*current=root;
+    while((current->next)!=NULL){
+        current=current->next;
+    }
+    while (current!=root)
+    {
+        printf("%d\n",current->data);
+        current=current->pre;
+    }
+    printf("%d\n",current->data);
+    return ;
 }
